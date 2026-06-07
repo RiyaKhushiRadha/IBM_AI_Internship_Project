@@ -31,10 +31,37 @@ with st.form("profile_form"):
 if submitted:
     st.success("Profile Submitted Successfully! 🎉")
 
-    st.subheader("Your Information")
+    st.subheader("🎯 Career Recommendations")
 
-    st.write(f"**Name:** {name}")
-    st.write(f"**Education:** {education}")
-    st.write(f"**Skills:** {skills}")
-    st.write(f"**Career Goal:** {career_goal}")
-    st.write(f"**Interests:** {interests}")
+if "AI" in career_goal.upper():
+    st.success("Recommended Career Paths")
+    st.write("• AI Engineer")
+    st.write("• Machine Learning Engineer")
+    st.write("• Data Scientist")
+
+    st.subheader("📚 Skills to Learn")
+    st.write("• Machine Learning")
+    st.write("• SQL")
+    st.write("• Deep Learning")
+
+    st.subheader("🏆 Certifications")
+    st.write("• IBM AI Fundamentals")
+    st.write("• Google Data Analytics")
+
+elif "DATA" in career_goal.upper():
+    st.success("Recommended Career Paths")
+    st.write("• Data Analyst")
+    st.write("• Business Analyst")
+    st.write("• Data Scientist")
+
+    st.subheader("📚 Skills to Learn")
+    st.write("• SQL")
+    st.write("• Power BI")
+    st.write("• Tableau")
+
+    st.subheader("🏆 Certifications")
+    st.write("• Google Data Analytics")
+    st.write("• IBM Data Analyst")
+
+else:
+    st.info("More recommendations coming soon 🚀")
