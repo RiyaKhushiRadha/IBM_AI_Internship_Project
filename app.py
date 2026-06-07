@@ -33,35 +33,107 @@ if submitted:
 
     st.subheader("🎯 Career Recommendations")
 
-if "AI" in career_goal.upper():
-    st.success("Recommended Career Paths")
-    st.write("• AI Engineer")
-    st.write("• Machine Learning Engineer")
-    st.write("• Data Scientist")
+    skills_lower = skills.lower()
+    career_goal_lower = career_goal.lower()
 
-    st.subheader("📚 Skills to Learn")
-    st.write("• Machine Learning")
-    st.write("• SQL")
-    st.write("• Deep Learning")
+    career_paths = []
+    skills_to_learn = []
+    certifications = []
 
-    st.subheader("🏆 Certifications")
-    st.write("• IBM AI Fundamentals")
-    st.write("• Google Data Analytics")
+    # AI Careers
+    if "ai" in career_goal_lower or "machine learning" in career_goal_lower:
+        career_paths = [
+            "AI Engineer",
+            "Machine Learning Engineer",
+            "Data Scientist"
+        ]
 
-elif "DATA" in career_goal.upper():
-    st.success("Recommended Career Paths")
-    st.write("• Data Analyst")
-    st.write("• Business Analyst")
-    st.write("• Data Scientist")
+        skills_to_learn = [
+            "Python",
+            "Machine Learning",
+            "SQL",
+            "Deep Learning"
+        ]
 
-    st.subheader("📚 Skills to Learn")
-    st.write("• SQL")
-    st.write("• Power BI")
-    st.write("• Tableau")
+        certifications = [
+            "IBM AI Fundamentals",
+            "Google Data Analytics"
+        ]
 
-    st.subheader("🏆 Certifications")
-    st.write("• Google Data Analytics")
-    st.write("• IBM Data Analyst")
+    # Data Careers
+    elif "data" in career_goal_lower:
+        career_paths = [
+            "Data Analyst",
+            "Business Analyst",
+            "Data Scientist"
+        ]
 
-else:
-    st.info("More recommendations coming soon 🚀")
+        skills_to_learn = [
+            "SQL",
+            "Power BI",
+            "Tableau",
+            "Python"
+        ]
+
+        certifications = [
+            "Google Data Analytics",
+            "IBM Data Analyst"
+        ]
+
+    # Web Development Careers
+    elif (
+        "web" in career_goal_lower
+        or "frontend" in career_goal_lower
+        or "full stack" in career_goal_lower
+    ):
+        career_paths = [
+            "Frontend Developer",
+            "Full Stack Developer",
+            "UI Engineer"
+        ]
+
+        skills_to_learn = [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React",
+            "Node.js"
+        ]
+
+        certifications = [
+            "Meta Front-End Developer",
+            "JavaScript Certification"
+        ]
+
+    else:
+        st.info("More recommendations coming soon 🚀")
+
+    # Show recommendations only if careers are found
+    if career_paths:
+
+        st.success("Recommended Career Paths")
+
+        for career in career_paths:
+            st.write(f"• {career}")
+
+        # Find missing skills
+        missing_skills = []
+
+        for skill in skills_to_learn:
+            if skill.lower() not in skills_lower:
+                missing_skills.append(skill)
+
+        st.subheader("📚 Skills to Learn")
+
+        if missing_skills:
+            for skill in missing_skills:
+                st.write(f"• {skill}")
+        else:
+            st.success(
+                "🎉 Congratulations! You already have all the required skills."
+            )
+
+        st.subheader("🏆 Certifications")
+
+        for cert in certifications:
+            st.write(f"• {cert}")
