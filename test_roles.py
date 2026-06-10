@@ -8,5 +8,5 @@ skills = [
 
 recommendations = recommend_roles(skills)
 
-for rec in recommendations:
-    print(rec)
+for role, score in recommendations:
+    print(f"{role} --> Match Score: {score}")
