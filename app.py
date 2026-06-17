@@ -4,7 +4,7 @@ from utils.parser import extract_text_from_pdf
 from utils.skill_extractor import extract_skills
 from utils.role_recommender import recommend_roles
 from utils.ats_matcher import calculate_ats_score
-from utils.suggestion_generator import generate_suggestions
+from utils.ai_suggestions import generate_ai_suggestions
 from utils.interview_generator import generate_interview_questions
 
 st.set_page_config(
@@ -93,15 +93,16 @@ if uploaded_file is not None:
     for skill in ats_result["missing_skills"]:
         st.write(f"• {skill}")
 
-    suggestions = generate_suggestions(
-            ats_result["missing_skills"]
-            )
-
     st.subheader("💡 AI Suggestions")
 
-    for suggestion in suggestions:
-        st.write(f"✅ {suggestion}")
+    ai_suggestions = generate_ai_suggestions(
+        skills,
+        top_role,
+        ats_result["missing_skills"]
+        )
 
+    st.write(ai_suggestions)
+    
     questions = generate_interview_questions(
         skills
         )
