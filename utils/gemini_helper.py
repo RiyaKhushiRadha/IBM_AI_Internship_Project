@@ -12,8 +12,24 @@ model = genai.GenerativeModel(
 
 def get_gemini_response(prompt):
 
-    response = model.generate_content(
-        prompt
-    )
+    try:
 
-    return response.text
+        response = model.generate_content(prompt)
+
+        print("Gemini response:")
+        print(response.text)
+
+        return response.text
+
+    except Exception as e:
+
+        print("Gemini Error:")
+        print(e)
+
+        return "Unable to generate response right now."
+
+    # response = model.generate_content(
+    #     prompt
+    # )
+
+    # return response.text
