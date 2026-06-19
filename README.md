@@ -134,7 +134,8 @@ The Smart Career Assistant powered by AI is designed to offer a straightforward 
 
 ##  Developed By
 
-IBM Internship Project by Riya
+Riya
+During IBM Internship Project
 
 **Smart Career Assistant using AI**
 
